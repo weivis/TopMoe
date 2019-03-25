@@ -1,0 +1,21 @@
+.uibox.width{width: calc(100% - 16px);margin: 0 auto;}
+
+.body.header{width: 100%;height: 50px;position: relative}
+
+.header.logo{position: absolute;left: 8px;top: 0;bottom: 0;margin: auto}
+.header.nav{float: right;position: absolute;right: 10px;top: 0;bottom: 0;height: 30px;margin: auto;}
+.header.navhide{float: right;padding-left: 5px;padding-right: 7px;font-size: 14px;height: 25px;line-height: 25px;margin-left: 7px;}
+.header.navhide.a{border-bottom: 2px solid #f547f2;color: #f547f2;line-height: 25px;height: 25px;}
+
+.body.bottonnav{width: 100%;height: 60px;background-color: #fff;box-shadow: 0px 0px 15px #c1c1c1;position: absolute;bottom: 0;left: 0;right: 0;}
+
+.bottonnav.msghide{position: absolute;right: 5px;bottom: 10px;width: 13px;height: 13px;border-radius: 50px;background-color: #f547f2;z-index: 10;color: #fff;line-height: 15px;text-align: center;font-size: 10px;}
+.userhead{float: left;position: relative;width: 50px;height: 60px;}
+.userhead.headimg{width: 40px;height: 40px; position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto}
+
+.bottonnav.button{float: left;width: 50px;height: 60px;position: relative;margin-left: 20px;transition: all linear .4s;background-color: #fff}
+.bottonnav.button:hover{transition: all linear .4s;background-color: #000}
+.bottonnav.button-img{width: 18px;height: 18px;position: absolute;left: 0;right: 0;top: 0;margin: auto;bottom: 0px;}
+.bottonnav.button-img>img{height: 100%;margin: 0 auto}
+
+.body.updynamic{width: 65px;height: 65px;border-radius: 100px;background-color: #e2234e;position: absolute;bottom: 30px;right: 20px;z-index: 10}
