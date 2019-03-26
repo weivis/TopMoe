@@ -5,6 +5,7 @@
 		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
 		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
 		<link rel="stylesheet" type="text/css" href="./css/common.css">
+		<link href="css/mui.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<header id="header">
@@ -20,13 +21,11 @@
 				</div>
 			</div>
 		</header>
-
 		<div class="body updynamic">
 			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="25px" style="position: absolute;left: 0;right: 0;bottom: 0;margin: auto;top: 0;">
 				<image x="0px" y="0px" width="24px" height="25px" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAQAAACBIibWAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfjAxkVGScSUtyhAAAALElEQVQ4y2P8z4AV/GdgYGDEJsHEQCIY1TBSNDD+/0+aBjJswC4+mlpHvAYA+f8GLPURmwcAAAAASUVORK5CYII=" />
 			</svg>
 		</div>
-
 		<div class="body bottonnav">
 			<div class="uibox width">
 
@@ -54,9 +53,15 @@
 		</div>
 
 	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/userauth.js"></script>
     <script type="text/javascript">
-   		document.addEventListener('plusready', function(){
-   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-   		});
+		(function($, doc) {
+			document.addEventListener('plusready', function(){
+				
+				Userauth.aloginfor()
+				
+			});
+		}(mui, Userauth, document));
     </script>
 </html>
