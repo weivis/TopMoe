@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+	<head>
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<title>首页</title>
+		<script src="js/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="page" style="margin-top: 0px;">
+			<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			</div>
+		</div>
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script>
+		mui.init({
+		  pullRefresh : {
+			container:"#refreshContainer",//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+			up : {
+			  height:50,//可选.默认50.触发上拉加载拖动距离
+			  auto:true,//可选,默认false.自动上拉加载一次
+			  contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+			  contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+			  callback :bbb //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+			}
+		  }
+		});
+
+		function bbb() {
+			for (var i = 0; i < 9; i++) {
+				$('#refreshContainer').append(
+					'<li><a href=""><div class="hui-media-content hui-media-content-left"><h1>标题内容....</h1><p>power by hcoder.net</p></div><div class="hui-media-list-img"><img src="img/信息科学.jpg" /></div></a></li>'
+				)
+			}
+			this.endPullupToRefresh(true|false);
+			mui('#refreshContainer').pullRefresh().refresh(true);
+		}
+	</script>
+</html>

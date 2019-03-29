@@ -7,16 +7,16 @@ var Userauth = {
 			if(user){
 				alert('已登录')
 			}else{
-				mui.openWindow({
-					url: 'login.html',
-					id: 'login',
-					show: {
-						aniShow: true
-					},
-					waiting: {
-						autoShow: false
-					}
-				});
+//				mui.openWindow({
+//					url: 'login.html',
+//					id: 'login',
+//					show: {
+//						aniShow: true
+//					},
+//					waiting: {
+//						autoShow: false
+//					}
+//				});
 			}
 	}
 	
