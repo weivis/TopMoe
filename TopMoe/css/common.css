@@ -1,4 +1,4 @@
-/**body{background-color: #ffffff !important;}**/
+body{background-color: #ffffff !important;}
 
 /**框架·页面全局宽度**/
 .uibox.width{width: calc(100% - 16px);margin: 0 auto;}

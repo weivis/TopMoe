@@ -11,11 +11,42 @@
 	</head>
 	<body>
 		<div id="page" style="margin-top: 0px;">
-			<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="background-color: #ffffff !important;">
+				<style>
+					.content-box{width: calc(100% - 30px);border-radius: 5px;overflow: hidden;margin: 0 auto;position: relative;box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2)}
+					.content-box-imgbox{width: 100%;max-height:130px;position: relative;}
+					.content-box-imgbox>img{width: 100%;}
+					.content-box-imgbox>div{overflow: hidden;height: 80px;width:100%;position: absolute;bottom: 0;left: 0;right: 0;background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(98, 72, 134, 0.5));}
+					.content-box-info{position: absolute;top: 7px;left: 10px;z-index: 10;height: 29px;width: calc(100% - 30px);}
+					.content-box-info_userhead{width: 25px;height: 25px;box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);border-radius: 100px;overflow: hidden;float: left;border: 2px solid #ffffff;}
+					.content-box-info_userhead>img{width: 100%;}
+					.content-box-info_title{float: left;height: 100%;width: calc(100% - 35px);line-height: 29px;color: #fff;margin-left:10px;overflow: hidden;white-space: nowrap;text-overflow:ellipsis;text-shadow:0px 0px 2px rgba(0, 0, 0, 0.7);font-size: 14px; }
+					.content-box-data{width: calc(100% - 20px);height: 29px;position: absolute;margin: auto;bottom: 0;left: 0;right: 0;z-index: 10;line-height: 19px;font-size: 13px;color: #fff;}
+					.content-box-data>img{height: 19px;float: left;margin-right: 5px;}
+					.content-box-data>span{color: #ffffff;}
+				</style>
+				<div>
+					
+					<div class="content-box">
+						<div class="content-box-info">
+							<div class="content-box-info_userhead"><img src="img/1.jpg"></div>
+							<div class="content-box-info_title">标题标题标题标题标题标题标题标题标题</div>
+						</div>
+						<div class="content-box-data">
+							<img src="img/msg.png" height="19px"><span>123</span> | <span>话题 · 讨论</span>
+						</div>
+						<div class="content-box-imgbox">
+							<div></div>
+							<img src="img/1.jpg">
+						</div>
+					</div>
+					
+				</div>
 			</div>
 		</div>
 	</body>
 	<script src="js/mui.min.js"></script>
+	<!--
 	<script>
 		mui.init({
 		  pullRefresh : {
@@ -39,5 +70,5 @@
 			this.endPullupToRefresh(true|false);
 			mui('#refreshContainer').pullRefresh().refresh(true);
 		}
-	</script>
+	</script>-->
 </html>
