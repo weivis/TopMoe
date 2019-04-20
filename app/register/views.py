@@ -1,46 +1,54 @@
-__registeror__ = 'Ran'
-from app import Flask, cache, login_manager, db
+__author__ = 'Ran'
+from app import Flask, db
 from ..register import register
-from flask import render_template, request, redirect, url_for
-from flask_bcrypt import generate_password_hash
-from app.Database import Account
+from flask import render_template, request, session, redirect
+from flask_login import current_user
+
+from app.DB_Account import Account
+
 import json
-import re
-from flask_login import login_user, login_required, logout_user, current_user
+#首页
+@register.route('/api', methods=["GET", "POST"])
+def registerAccount():
 
-#注册
-@register.route('/create', methods=["GET","POST"])
-def register_main():
-    if request.method == 'POST':
-        jsondata = request.json
-        
-        if jsondata['username'] == '':
-            return json.dumps({'code':'false', 'text':'用户名不能为空'})
+    '''
+        {"username":"", "password":"", "userphone":"", "useremail":""}
+    '''
 
-        if jsondata['useremail'] == '':
-            return json.dumps({'code':'false', 'text':'邮箱不能为空'})
-
-        if jsondata['phone'] == '':
-            return json.dumps({'code':'false', 'text':'手机不能为空'})
-
-        if jsondata['password'] == '':
-            return json.dumps({'code':'false', 'text':'密码不能为空'})
-
-        if Account.query.filter_by(username = jsondata['username']).first():
-            return json.dumps({'code':'false', 'text':'用户名已存在'})
-
-        if Account.query.filter_by(phone = jsondata['phone']).first():
-            return json.dumps({'code':'false', 'text':'该手机已经注册过'})
-
-        if Account.query.filter_by(useremail = jsondata['useremail']).first():
-            return json.dumps({'code':'false', 'text':'该邮箱以注册过'})
-            
-        else:
-            #print(jsondata['password'])
-            generate_newuserdata = Account(username=jsondata['username'], phone = jsondata['phone'], password = str(jsondata['password']), useremail = jsondata['useremail'])
-            db.session.add(generate_newuserdata)
-            db.session.commit()
-            return json.dumps({'code':'True', 'text':'注册成功'})
+    if current_user.is_authenticated:
+        return json.dumps({'code': 0, 'text': '你已登录过'})
 
     else:
-        return render_template('main/register.html')
+        if request.method == 'POST':
+            jsondata = request.json
+            print(jsondata)
+
+            if jsondata['username'] == '':
+                return json.dumps({'code':0, 'text':'用户名不能为空'})
+
+                '''
+                elif jsondata['useremail'] == '':
+                    return json.dumps({'code':0, 'text':'邮箱不能为空'})
+
+                elif Account.query.filter_by(useremail = jsondata['useremail']).first():
+                    return json.dumps({'code':0, 'text':'该邮箱以注册过'})
+                '''
+
+            elif jsondata['userphone'] == '':
+                return json.dumps({'code':0, 'text':'手机不能为空'})
+
+            elif jsondata['password'] == '':
+                return json.dumps({'code':0, 'text':'密码不能为空'})
+
+            elif Account.query.filter_by(username = jsondata['username']).first():
+                return json.dumps({'code':0, 'text':'用户名已存在'})
+
+            elif Account.query.filter_by(userphone = jsondata['userphone']).first():
+                return json.dumps({'code':0, 'text':'该手机已经注册过'})
+
+            else:
+                Account(username=jsondata['username'], userphone = jsondata['userphone'], password = str(jsondata['password']))#, useremail = jsondata['useremail']
+                return json.dumps({'code':1, 'text':'注册成功'})
+
+        else:
+            return json.dumps({'code':0, 'text':'非法访问'})

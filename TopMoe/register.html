@@ -7,14 +7,14 @@
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<title>首页</title>
 		<script src="js/jquery.min.js"></script>
-		<script src="js/mui.min.js"></script>
 	</head>
 	<body>
-		登录页面
-		<input type="text" name="" class="" id="phone" placeholder="手机号">
+		<input type="text" name="" class="" id="username" placeholder="用户名">
+		注册页面
+		<input type="number" name="" class="" id="phone" placeholder="手机号">
 		<input type="password" name="" class="" id="password" placeholder="登录密码">
-		<button id="login">立即登录</button>
-		<a href="register.html"><button>立即注册</button></a>
+		<button id="login">立即注册</button>
+		<a href="login.html"><button>已有帐户 立即登录</button></a>
 	</body>
 <script>
         $("#login").click(function () {
@@ -22,10 +22,11 @@
                     alert('手机号不能为空')
                 } else {
                     $.ajax({
-                        url: 'http://192.168.0.100/api/sgin-in/', //api
+                        url: 'http://192.168.0.100/api/register/', //api
                         type: 'POST',
                         data: JSON.stringify({
-                            "phone": $("#phone").val(),
+							"username": $("#username").val(),
+                            "userphone": $("#phone").val(),
                             "password": $("#password").val()
                         }), //数据
                         async: true,
@@ -34,20 +35,8 @@
                         processData: false,
                         dataType: 'json',
                         success: function (returndata) {
-							alert(returndata['text'])
-                            if(returndata['code'] == 1){
-								localStorage.setItem("userid", returndata['userid'])
-							mui.openWindow({
-								url: 'main.html',
-								id: 'main',
-								show: {
-									aniShow: true
-								},
-								waiting: {
-									autoShow: false
-								}
-							});
-                        }},
+                            alert(returndata)
+							},
                         error: function (returndata) {
                             alert('系统繁忙')
                         }

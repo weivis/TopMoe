@@ -1,5 +1,5 @@
-__registeror__ = 'Ran'
+__author__ = 'Ran'
 
 from flask import Blueprint
-register = Blueprint('register', __name__, template_folder='../templates', static_folder='../static') #t
+register = Blueprint('register', __name__)
 from ..register import views

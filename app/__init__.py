@@ -4,19 +4,20 @@ from flask import Flask  # flask
 from flask_sqlalchemy import SQLAlchemy  # sql
 from flask_login import LoginManager
 from app import config  # config
+from flask_cors import *
 from flask_caching import Cache
-from datetime import timedelta
 
-#实例化app
-app = Flask(__name__)
+#实例化app 初始化模板文件路径和静态文件路径
+app = Flask(__name__, template_folder='', static_folder='')
 
 #引入全局配置
 app.config.from_object(config)
+CORS(app, supports_credentials=True)
 
 #配置flasklogin
 login_manager = LoginManager()
 login_manager.session_protection = None
-login_manager.login_view = ''
+login_manager.login_view = '' #未登录跳转地址
 login_manager.init_app(app=app)
 
 #跨域密匙
